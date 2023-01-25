@@ -38,7 +38,7 @@ printf " Used Memory: $total_mem_used/$total_mem"
 
 #########################################ping section################
                                     elif [ "$argument" == "ping" ] ; then
-                                    fping -c1 -t500  $address > IPoutput 2>&1
+                                    fping -c1 -t500  $address   > /dev/null 2>&1
                 if [ $?  -eq "0" ]; then
 ping_time=$(ping -c 4 $address | tail -1| awk '{print $4}' | cut -d '/' -f 2 | cut -d '.' -f 1)
 echo "Ping: $ping_time ms"
