@@ -127,7 +127,22 @@ volts=$(printf "%.3f" $decimal)
 echo $volts V
 
 
-#######################end of battery voltage#################################
+#######################end of battery voltage############################################
+
+######################power Consumtion########################
+elif [ "$argument" == "power_consumtion" ] ; then
+
+
+power_now=$(echo "scale=1; $(cat /sys/class/power_supply/BAT0/power_now)/1000000" | bc)
+
+
+echo "$power_now"W
+
+
+######################end of power Consumtion######################
+
+
+
 elif [ "$argument" == "" ] ; then
 
 echo : Arguments:
@@ -138,6 +153,7 @@ echo : sensors - prints cpu and ssd temp
 echo : ssd_life - prints ssd remaining life
 echo : battery_voltage - prtints the battery voltage
 echo : ip - prints the ip
+echo : power_consumtion - prints the laptop battery power Consumtion!
 
 echo remember to set the ping address, root partion and second partition in order to get good indications!
 
